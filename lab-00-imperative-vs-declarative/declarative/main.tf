@@ -1,5 +1,5 @@
 # =============================================================================
-# DECLARATIVE S3 Bucket Configuration
+# DECLARATIVE DynamoDB Table Configuration
 #
 # We declare WHAT we want, not HOW to create it.
 #
@@ -7,7 +7,7 @@
 # of your AWS account (tracked in terraform.tfstate), and makes only the
 # changes necessary to bring reality in line with this configuration.
 #
-# Run it once  -> bucket is created.
+# Run it once  -> table is created.
 # Run it again -> "No changes." That is idempotency.
 # =============================================================================
 
@@ -28,8 +28,15 @@ provider "aws" {
 
 # ---------------------------------------------------------------------------
 # This is the entire infrastructure definition.
-# We say "I want an S3 bucket with this name" and Terraform handles the rest.
+# We say "I want a DynamoDB table with this name" and Terraform handles the rest.
 # ---------------------------------------------------------------------------
-resource "aws_s3_bucket" "shopsmart_images" {
-  bucket = var.bucket_name
+resource "aws_dynamodb_table" "shopsmart_products" {
+  name         = var.table_name
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "ProductId"
+
+  attribute {
+    name = "ProductId"
+    type = "S"
+  }
 }

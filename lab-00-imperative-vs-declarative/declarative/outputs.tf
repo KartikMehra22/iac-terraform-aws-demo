@@ -1,9 +1,9 @@
-output "bucket_arn" {
-  description = "The ARN of the S3 bucket created by Terraform."
-  value       = aws_s3_bucket.shopsmart_images.arn
+output "table_arn" {
+  description = "The ARN of the DynamoDB table created by Terraform."
+  value       = aws_dynamodb_table.shopsmart_products.arn
 }
 
-output "bucket_name" {
-  description = "The name of the S3 bucket created by Terraform."
-  value       = aws_s3_bucket.shopsmart_images.bucket
+output "table_name" {
+  description = "The name of the DynamoDB table created by Terraform."
+  value       = aws_dynamodb_table.shopsmart_products.name
 }
