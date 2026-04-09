@@ -25,7 +25,23 @@ The course follows a **"break it to understand it"** philosophy. You will intent
 | [04](lab-04-variables-and-outputs/) | Variables & Outputs | Parameterize your config, extract useful info after apply |
 | [05](lab-05-dependencies/) | Dependencies & Graphs | Build a multi-resource stack, visualize the dependency graph |
 | [06](lab-06-drift-detection/) | Drift Detection | Play the "cowboy admin," manually change infra, then see Terraform catch you |
-| [Challenge](challenge-shopsmart/) | **Capstone** | Rebuild ShopSmart's full infrastructure from a written spec — the disaster recovery test |
+| [Challenge](challenge-shopsmart/) | **Capstone** | Rebuild ShopSmart's full infrastructure from a written spec |
+
+---
+
+## Terraform CLI Cheat Sheet
+
+During these labs, you will use these commands frequently. Get comfortable with them!
+
+| Command | Purpose | When to run it |
+|---------|---------|----------------|
+| `terraform init` | Initializes the directory and downloads providers. | First thing in every new lab. |
+| `terraform fmt` | Rewrites your `.tf` files to a canonical format and style. | Before every commit/plan to keep code clean. |
+| `terraform validate` | Checks if your configuration is syntactically valid. | After making changes, before `plan`. |
+| `terraform plan` | Shows what changes Terraform will make to your infrastructure. | Always run this to double-check your work. |
+| `terraform apply` | Executes the changes to reach the desired state. | When you are ready to build/modify resources. |
+| `terraform destroy` | Tears down all resources managed by the configuration. | **At the end of every lab** to avoid AWS costs. |
+| `terraform show` | Inspects the current state or a plan file. | When you want to see exactly what's in your state. |
 
 ---
 
@@ -64,3 +80,18 @@ aws configure
 terraform version   # Should show v1.5+
 aws sts get-caller-identity   # Should show your account
 ```
+
+---
+
+## 🚀 Next Steps
+
+Once you've mastered these labs, consider exploring these advanced topics:
+
+1. **Remote State**: Store your `terraform.tfstate` in S3 with DynamoDB locking.
+2. **Modules**: Learn how to package and reuse infrastructure components.
+3. **Terraform Cloud**: Automate your deployments in a managed CI/CD environment.
+4. **Terragrunt**: Keep your Terraform configurations DRY (Don't Repeat Yourself).
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
